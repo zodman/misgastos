@@ -1,0 +1,777 @@
+/* ---- OVERLAY ---- */
+.m-overlay {
+  position: absolute;
+  top: 0pt;
+  left: 0pt;
+  margin: 0px;
+  width: 100%;
+  height: 100%;
+  z-index: 9999;
+}
+/* ---- OVERLAY ---- */
+
+/* ---- CAROUSEL ---- */
+.m-carousel {
+  position: relative;
+  overflow: hidden;
+}
+.m-carousel ul.m-carousel-items {
+  position: relative;
+  display: block;
+  list-style: none; 
+  padding: 0px;
+  margin: 0px;
+  overflow: visible;
+}
+.m-carousel ul.m-carousel-items li {
+  list-style: none;
+  padding: 0px;
+  margin: 0px;
+  float: left;
+}
+/* ---- CAROUSEL ---- */
+
+/* ---- TREEVIEW ---- */
+.m-treeview-frame li {
+  margin: 0px;
+  padding: 0px;
+  list-style: none;
+}
+.m-treeview-frame ul {
+  margin: 0px;
+  padding: 0px;
+  margin-left: 0.8em;
+  list-style: none;
+  display: table;
+}
+.m-treeview li span {
+}
+.m-treeview li {
+  list-style-image: url('img/treeview-item.gif');
+}
+.m-treeview li.m-selected {
+}
+.m-treeview li.m-collapsed {
+  list-style-image: url('img/treeview-collapsed.gif');
+}
+.m-treeview li.m-expanded {
+  list-style-image: url('img/treeview-expanded.gif');
+}
+/* ---- TREEVIEW ---- */
+
+/* ---- BUBBLE ---- */
+.m-bubble {
+  width: 200px;
+  position: absolute;
+  padding: 0px;
+}
+.m-red {
+}
+.m-blue {
+}
+.m-yellow {
+}
+.m-bubble-content {
+  padding: 0.5em;
+}
+.m-bubble-link-top,
+.m-bubble-link-left,
+.m-bubble-link-right,
+.m-bubble-link-bottom
+{
+  width: 15px;
+  height: 15px;
+  position: absolute;
+}
+.m-bubble-link-top {
+  top: -15px;
+}
+.m-bubble-link-left {
+  left: -15px;
+}
+.m-bubble-link-right {
+  right: -15px;
+}
+.m-bubble-link-bottom {
+  bottom: -15px;
+}
+.m-bubble-content {
+
+}
+/* ---- BUBBLE ---- */
+
+
+/* ---- POPUP CONTROL ---- */
+.m-popup .m-resize {
+  position: absolute;
+  bottom: 5px;
+  right: 5px;
+  width: 16px;
+  height: 16px;
+
+}
+.m-popup .m-control {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  height: 16px;
+  width: 100px;
+}
+.m-popup .m-control .m-button {
+  display: block;
+  width: 16px;
+  height: 16px;
+  float: right;
+  margin: 1px;
+}
+.m-popup .m-content-wrapper {
+  position: absolute;
+  left: 15px;
+  bottom: 20px;
+  right: 5px;
+  top: 40px;
+  overflow: auto;
+  display: block;
+}
+
+.m-popup .m-control {
+  top: 0px;
+  right: 17px;
+}
+.m-popup .m-control .m-button {
+  width: 23px;
+  height: 23px;
+}
+
+.m-popup .m-control .m-popup-maximize {
+}
+.m-popup .m-control .m-popup-maximize:hover {
+}
+.m-popup .m-control .m-popup-maximize:active {
+}
+
+.m-popup .m-control .m-popup-close {
+}
+.m-popup .m-control .m-popup-close:hover {
+}
+.m-popup .m-control .m-popup-close:active {
+}
+
+.m-popup .m-control .m-popup-minimize {
+}
+.m-popup .m-control .m-popup-minimize:hover {
+}
+.m-popup .m-control .m-popup-minimize:active {
+}
+
+.m-popup .m-control .m-popup-restore {
+}
+.m-popup .m-control .m-popup-restore:hover {
+}
+.m-popup .m-control .m-popup-restore:active {
+}
+/* ---- POPUP CONTROL ---- */
+
+/* ---- DIALOG CONTROL ---- */
+.m-dialog {
+  padding: 0px;
+  margin: 0px;
+  display: block;
+  position: absolute;
+  z-index: 10000;
+  overflow: visible;
+}
+.m-dialog .m-buttons {
+  position: absolute;
+  right: 15px;
+  bottom: 15px;
+}
+.m-dialog .m-buttons button {
+  margin-left: 10px;
+}
+.m-dialog .m-close {
+  position: absolute;
+  display: block;
+  right: 3px;
+  top: 3px;
+  width: 16px;
+  height: 16px;
+}
+.m-dialog .m-close:hover {
+}
+
+/* default top left corner */
+.m-dialog .m-corner-tl {
+  width: 10px;
+  height: 25px;
+  position: absolute;
+  left: 0px;
+  top: 0px;
+}
+/* active top left corner */
+.m-active .m-corner-tl {
+}
+
+/* default top right corner */
+.m-dialog .m-corner-tr {
+  width: 10px;
+  height: 25px;
+  position: absolute;
+  right: 0px;
+  top: 0px;
+}
+/* active top right corner */
+.m-active .m-corner-tr {
+}
+
+
+.m-dialog .m-corner-br {
+  width: 7px;
+  height: 7px;
+  position: absolute;
+  right: 0px;
+  bottom: 0px;
+}
+
+.m-dialog .m-corner-bl {
+  width: 7px;
+  height: 7px;
+  position: absolute;
+  left: 0px;
+  bottom: 0px;
+}
+.m-dialog .m-frame {
+  padding: 0px;
+  margin: 0px;
+  position: relative;
+}
+.m-dialog .m-title {
+  letter-spacing: -1px;
+  height: 25px;
+  margin: 0px;
+  padding: 0px;
+  padding-left: 0px;
+  padding-right: 0px;
+  margin-left: 10px;
+  margin-right: 10px;
+  overflow: hidden;
+}
+.m-dialog .m-title span {
+  display: block;
+  padding: 0px;
+  margin: 3px;
+}
+.m-active .m-title {
+}
+.m-dialog .m-foot {
+  height: 7px;
+  margin-left: 7px;
+  margin-right: 7px;
+}
+.m-dialog .m-body {
+  height: 100px;
+  margin-top: 0px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+/* ---- DIALOG CONTROL ---- */
+
+/* ---- DOCK CONTROL --- */
+.m-dock {
+  position: absolute;
+  left: 0px;
+  right: 0px;
+  bottom: 0px;
+  height: 46px;
+  overflow: auto;
+  z-index: 10001;
+  position: fixed;
+}
+.m-dock button {
+  height: 21px;
+  margin: 1px;
+  width: 120px;
+  overflow: hidden;
+}
+/* ---- DOCK CONTROL --- */
+
+/* ---- DATAGRID CONTROL ---- */
+.m-datagrid .frame {
+  overflow: auto;
+  height: 300px;
+}
+.m-datagrid input {
+  margin: 0px;
+}
+.m-datagrid table {
+}
+.m-datagrid table td {
+  margin: 0px;
+  padding: 0px;
+}
+.m-datagrid table thead td {
+}
+.m-datagrid .selected,
+.m-datagrid tr.selected input
+{
+}
+.m-datagrid .focus, .m-datagrid tr.focus td {
+}
+.m-datagrid tbody .id {
+  width: 40px;
+}
+/* ---- DATAGRID CONTROL ---- */
+
+/* ---- NOTEBOOK CONTROL ---- */
+.m-notebook {
+  /*height: 100%;*/
+  width: 100%;
+}
+ul.m-tabs {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+ul.m-tabs li  {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  float: left;
+  padding: 2px;
+  line-height: 100%;
+  overflow: hidden;
+  white-space: nowrap;
+  text-align: center;
+  padding: 3px;
+  padding-left: 8px;
+  padding-right: 20px;
+  font-size: small;
+  cursor: pointer;
+  margin-right: 1px;
+  position: relative;
+}
+ul.m-tabs li span {
+  display: block;
+}
+ul.m-tabs li span.m-close {
+  position: absolute;
+  right: 2px;
+  top: 0px;
+}
+ul.m-tabs li span.m-close:hover {
+  color: red;
+}
+ul.m-tabs li input {
+  border: none;
+  margin: 0px;
+  padding: 0px;
+  font-size: small;
+}
+.m-notebook .m-frame {
+  /*height: 100%;*/
+  width: 100%;
+  clear: both;
+}
+/* ---- NOTEBOOK CONTROL ---- */
+
+/* ---- CALENDAR CONTROL ---- */
+.m-calendar {
+  margin: 0 auto;
+  padding: 5px;
+  border: 1px solid #eee;
+}
+.m-calendar input {
+  font-size: 9px;
+  padding: 0px;
+  margin: 0px;
+}
+.m-calendar .text {
+}
+.m-calendar .head {
+  padding: 2px;
+}
+.m-calendar td {
+  padding: 0px;
+  padding-bottom: 3px;
+}
+.m-calendar .main {
+  padding: 4px;
+}
+.m-calendar .m-frame .grid {
+  margin-left: auto;
+  margin-right: auto;
+}
+.m-calendar .m-frame .grid {
+  border-collapse: collapse;
+  width: 95%;
+}
+.m-calendar .m-frame .grid thead th {
+
+}
+.m-calendar .m-frame .grid td,
+.m-calendar .m-frame .grid th
+{
+  padding: 1px;
+  padding-top: 3px;
+  padding-left: 3px;
+  margin: 0px;
+  line-height: 100%;
+}
+.m-calendar .m-frame .grid td.day:hover {
+}
+.m-calendar .m-frame .grid td.day {
+}
+.m-calendar .m-frame .grid td.today {
+  cursor: pointer;
+}
+.m-calendar .m-control {
+}
+.m-calendar .m-control:hover {
+}
+.m-calendar button {
+  padding:  2px;
+  margin:   2px;
+  float: right;
+}
+/* ---- CALENDAR CONTROL ---- */
+
+/* ---- EDITOR CONTROL ---- */
+.m-editor {
+  display: block;
+}
+.m-editor-set {
+  padding-top: 0.5em;
+  padding-bottom: 0.5em;
+}
+.m-editor .contents {
+  padding: 3px;
+}
+.m-editor textarea {
+
+}
+.m-editor iframe {
+  height: 300px;
+  width: 100%;
+  margin: 0px;
+}
+.m-visual-area {
+}
+.m-editor-buttons {
+  display: block;
+  overflow: auto;
+  padding: 5px;
+  margin: 0px;
+}
+.m-editor-buttons img.m-button {
+  margin: 0px;
+  padding: 0px;
+}
+.m-editor-buttons img.m-button:hover {
+}
+.m-editor-buttons .m-select {
+  display: block;
+  margin: 1px;
+  padding: 0px;
+  width: 144px;
+  float: left;
+}
+.m-editor-buttons .m-select img {
+  float: left; 
+}
+.m-editor-buttons .m-select select {
+  margin: 0px;
+  width: 120px;
+}
+/* ---- EDITOR CONTROL ---- */
+
+/* ---- TOOLBOX CONTROL ---- */
+.m-toolbox {
+  position: absolute;
+  padding: 0px;
+  margin: 0px;
+}
+/* ---- TOOLBOX CONTROL ---- */
+
+/* ---- FILEBROWSER CONTROL ---- */
+.m-filebrowser {
+  width: 100%;
+  display: block;
+}
+.m-filebrowser .m-fileview {
+  display: block;
+  padding: 2px;
+  margin: 0px;
+  overflow: auto;
+  margin-right: 5px;
+  height: 200px;
+}  
+.m-filebrowser .m-fileview .m-file {
+  display: block;
+  width: 47%;
+  white-space: nowrap;
+  float: left;
+  padding: 1px;
+  margin: 1px;
+  overflow: hidden;
+}
+.m-filebrowser .m-fileinfo {
+  display: block;
+  float: right;
+  width: 150px;
+}
+.m-filebrowser img.m-button {
+  margin: 1px;
+  padding: 0px;
+  margin-bottom: 1px;
+  margin-top: 1px;
+}
+.m-filebrowser img.m-button:hover {
+  opacity: 0.6;
+}
+/* ---- FILEBROWSER CONTROL ---- */
+
+/* ---- SPINBUTTON CONTROL ---- */
+.m-spinbutton {
+  overflow: auto;
+}
+.m-spinbutton input {
+}
+.m-spinbutton table {
+  margin: 0px;
+}
+.m-spinbutton td {
+  margin: 0px;
+  width: 16px;
+  padding: 0px;
+}
+.m-spinbutton tr {
+  margin: 0px;
+}
+.m-spinbutton .m-buttons img {
+  padding: 0px;
+  margin: 0px;
+  width: 16px;
+  height: 9px;
+}
+/* ---- SPINBUTTON CONTROL ---- */
+
+/* ---- AUTOCOMPLETE CONTROL ---- */
+.m-autocomplete {
+  width: 300px; 
+  z-index: 10;
+  position: absolute;
+  height: 150px;
+  overflow: auto;
+}
+.m-autocomplete ul {
+  list-style: none;
+  margin: 0px;
+  padding: 0px;
+}
+.m-autocomplete ul li {
+  display: block;
+  width: 280px;
+}
+.m-autocomplete .selected {
+}
+/* ---- AUTOCOMPLETE CONTROL ---- */
+
+/* ---- MENU CONTROL ---- */
+.m-menu ul {
+  list-style: none;
+  margin: 0px;
+  padding: 0px;
+  width: 10em;
+  position: relative;
+  z-index: 10000;
+}
+.m-menu ul li {
+  position: relative;
+  display: block;
+  list-style: none;
+  margin: 0px;
+  padding: 0px;
+}
+.m-menu ul a {
+  display: block;
+  width: 95%;
+  text-decoration: none;
+  line-height: normal; 
+  padding: 0;
+}
+.m-menu ul a:hover {
+  text-decoration: none;
+}
+.m-menu ul a span {
+  display: block;
+  width: 100%;
+  padding: 0.3em;
+}
+.m-menu ul a:hover, .m-menu ul a:hover span {
+}
+.m-menu a img {
+  margin-right: 2px;
+}
+.m-menu ul, .m-menu-hoz li ul {
+}
+.m-menu li ul {
+  position: absolute;
+  margin-top: -1.7em;
+  margin-left: 9.7em;
+}
+.m-menu li:hover li span.m-more {
+}
+.m-menu li:hover span.m-more {
+}
+.m-menu-hoz {
+  display: block;
+  height: 2em;
+}
+.m-menu-hoz ul li span.m-more {
+  visibility: hidden;
+}
+.m-menu-hoz ul li ul span.m-more {
+  visibility: visible;
+}
+.m-menu-hoz ul {
+  width: auto;
+}
+.m-menu-hoz ul li {
+  float: left;
+  width: 10em;
+}
+.m-menu-hoz li ul {
+  position: absolute;
+  margin-top: 0em;
+  margin-left: 0em;
+}
+.m-menu-hoz li ul li {
+  float: none;
+}
+.m-menu-hoz li ul li ul {
+  margin-top: -1.7em;
+  margin-left: 9.7em;
+}
+span.m-more {
+  position: absolute;
+  display: block;
+  padding: 0px;
+  margin: 0px;
+  line-height: normal;
+  padding-top: 0.3em;
+  right: 5px;
+  top: 0px;
+}
+/* ---- MENU CONTROL ---- */
+
+/* ---- SELECTION CONTROL ---- */
+.m-selection {
+  opacity: 0.6;
+  overflow: visible;
+}
+/* ---- SELECTION CONTROL ---- */
+
+
+/* ---- SEARCHLIST CONTROL ---- */
+.m-searchlist {
+}
+.m-searchlist ul {
+  list-style: none;
+  margin: 2px;
+  padding: 2px;
+  max-height: 300px;
+  overflow: auto;
+}
+.m-searchlist ul li {
+  display: block;
+  margin: 2px;
+  padding: 2px;
+  overflow: hidden;
+}
+.m-searchlist ul li.odd {
+}
+.m-searchlist ul li.even {
+}
+/* ---- SEARCHLIST CONTROL ---- */
+
+/* ---- MISC ELEMENTS ---- */
+div#m-log {
+  left: 0px;
+  bottom: 0px;
+  right: 0px;
+  position: absolute;
+  position: fixed;
+}
+div#m-log .m-log-handler {
+  height: 16px;
+}
+div#m-log .m-log-handler:hover {
+}
+div#m-log .m-log-content {
+  overflow: auto;
+}
+div#m-log .m-log-toggle {
+  background: url('debug.png');
+  width: 16px;
+  height: 16px;
+}
+div#m-log .log-line {
+  padding: 3px;
+  margin: 2px;
+}
+div#m-log .m-log-var {
+}
+div#m-log .m-log-constant {
+} 
+div#m-log .m-log-indent {
+  margin-left: 10px;
+}
+.m-loading-mask {
+}
+.m-loading-mask-2 {
+  position: relative;
+}
+.m-loading-mask-2 div {
+  position: absolute;
+  right: 0px;
+  left: 0px;
+}
+.m-loading-mask-2 img {
+  margin: 10px;
+}
+.m-form-message {
+  padding: 2px;
+  margin-left: 2px;
+  padding: 3px;
+}
+
+.m-form-mask {
+  position: absolute;
+}
+.m-form-mask img {
+  margin: 10px;
+}
+
+.m-rpc-success, .m-rpc-error {
+  position: fixed;
+  top: 0px;
+  padding: 0px;
+  margin: 0px;
+  width: 100%;
+  left: 0px;
+  padding-bottom: 10px;
+  padding-top: 10px;
+}
+.m-rpc-success {
+}
+.m-rpc-error {
+}
+.m-rpc-error span, .m-rpc-success span {
+  margin: 10px;
+}
+/* ---- MISC ELEMENTS ---- */
+
+/* IE Specific workarounds \*/
+* html .m-menu ul li { float: left; height: 1%; }
+* html .m-menu ul li a { height: 1%; }
+/* */

@@ -1,0 +1,78 @@
+/* ie6 does not support fixed */
+div#m-log {
+  width: expression(Browser.clientWidth());
+  top: expression(Browser.pageScrollY()+Browser.clientHeight()-document.getElementById('m-log').offsetHeight);
+  position: absolute;
+}
+div#m-log .m-log-handler {
+}
+
+.m-dialog .m-frame {
+  padding: 0px;
+  margin: 0px;
+  position: static;
+}
+
+.m-notebook ul.tabs {
+  display: block;
+  overflow: auto;
+  width: 100%;
+  height: 100%;
+}
+.m-notebook ul.tabs li {
+  display: block;
+  float: left;
+  width: 120px;
+  height: 36px;
+}
+.m-notebook ul.tabs li .m-tab-label {
+  line-height: 100%;
+  white-space: nowrap;
+  width: 114px;
+  overflow: hidden;
+  text-align: center;
+}
+.m-editor-buttons {
+  height: 100%;
+  width: 100%;
+}
+.m-rpc-error, .m-rpc-success {
+  top: expression(Browser.pageScrollY());
+  width: expression(Browser.clientWidth());
+  left: 0px;
+  position: absolute;
+}
+.m-dock {
+  display: block;
+  width: expression(Browser.clientWidth());
+  top: expression(Browser.pageScrollY()+Browser.clientHeight()-46);
+  left: 0px;
+  position: absolute;
+}
+.m-overlay {
+  position: absolute;
+  width: expression(Browser.clientWidth());
+  height: expression(Browser.clientHeight());
+  top: expression(Browser.pageScrollY());
+  left: 0px;
+}
+.m-select-hack {
+  z-index: 2000; 
+}
+.m-select-hack iframe.m-ie-hack {
+  display: none;
+  display: block;
+  position: absolute;
+  z-index: -1;
+  filter: mask();
+  top: 0px;
+  left: 0px;
+  width: expression(this.parentNode.offsetWidth);
+  height: expression(this.parentNode.offsetHeight);
+  overflow: hidden;
+}
+.m-popup .m-content-wrapper {
+  display: block;
+  height: expression(this.parentNode.parentNode.parentNode.offsetHeight-32);
+  width: 100%;
+}
