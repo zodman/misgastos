@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% block js %}
+<script type="text/javascript" src="/static/misgastos.js"></script>
+{% endblock %}
+
+{% block content %}
+
+<div class="right agregar">
+    <button type="button" class="href" onclick="Agregar('{% url add_tipo %}')">Agregar</button>
+</div>
+{% with object_list as tipos %}
+    <table class="table_abc">
+        <thead>
+        <tr>
+            <th colspan="2">Tipos </th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for tipo in tipos%}
+         <tr {% cycle 'class="odd"' '' %}>
+            <th class="nombre">{{ tipo.nombre }}</th>
+            <td>
+                <button class="href" onclick="borrar('{% url del_tipo tipo %}')">Eliminar</button>
+                <button class="href" onclick="editar('{% url edit_tipo tipo %}')">Editar</button>
+            </td>
+        </tr>
+        {% endfor %}
+        </tbody>
+        <tfoot>
+        <tr><td colspan="2"/></tr>
+        </tfoot>
+    </table>
+    
+{% endwith %}
+    
+
+{% endblock%}

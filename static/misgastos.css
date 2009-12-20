@@ -1,0 +1,109 @@
+/* 
+	Classy yet somehow fancy
+	table style created by Radu Bilei
+	for Chris Heilmann's CSS Table Gallery
+	http://twitter.com/radubilei
+	http://icant.co.uk/csstablegallery
+*/
+
+table,th,td	{	border:none;  border-collapse:collapse; font-family:corbel,'helvetica neue','trebuchet ms',arial,helvetica,sans-serif; font-size:1em; line-height:1.5em}
+table		{	background:black; -webkit-border-radius:6px; -moz-border-radius:6px; border-radius:6px; -webkit-box-shadow:1px 1px 10px rgba(0,0,0,0.3); -moz-box-shadow:1px 1px 10px rgba(0,0,0,0.3)}
+caption		{	text-align:left; text-transform:uppercase; font-size:150%; font-weight:bold; padding:1.5em 0; color:black}
+
+thead, 
+tfoot			{	color:white; }
+
+thead th				{	padding:0.5em 1em; text-transform:uppercase; text-align:left; }
+thead th:first-child	{	width:10em; text-align:right; }
+
+tbody td,
+tbody th				{	font-size:100%; padding:0.5em 1em; background-color:#e5e5e5; vertical-align:top}
+tbody th				{	color:#222;	text-align:right; background-image:url(/static/images/tabel.png); background-repeat:repeat-y; border-right:1px solid #ccc}
+tbody td:last-child		{	border-right:1px solid black}
+
+tbody tr.odd th, 
+tbody tr.odd td			{	background-color:#eee; color:#222}
+
+tfoot td,
+tfoot th				{	border:none; padding:4px; }
+tfoot th				{	text-align:right}
+
+table a:link	{	line-height:1em; color:black; display:inline-block; padding:3px 7px; margin:-3px -7px}
+table a:visited	{	color:#555}
+table a:hover	{	text-decoration:none; background:black; color:white; -webkit-border-radius:4px; -moz-border-radius:4px; border-radius:4px}
+
+::-moz-selection{	background:#202020; color:white}
+::selection		{	background:#202020; color:white}
+
+thead ::-moz-selection, 
+tfoot ::-moz-selection	{	background:white; color:#202020}
+thead ::selection, 
+tfoot ::selection		{	background:white; color:#202020}
+
+table.table_abc {
+    width: 100%;
+}
+table.table_abc th {
+    text-align:center;
+}
+table.table_abc td {
+    text-align:center;
+}
+table.table_abc th.nombre {
+    text-align:center;
+    width:70%;
+}
+
+.right{
+    text-align:right;
+    
+}
+
+.href {
+    -moz-background-clip:border;
+    -moz-background-inline-policy:continuous;
+    -moz-background-origin:padding;
+    -moz-border-radius-bottomleft:6px;
+    -moz-border-radius-bottomright:6px;
+    -moz-border-radius-topleft:6px;
+    -moz-border-radius-topright:6px;
+    background: transparent url(/static/images/img02.gif) repeat-x scroll left top;
+    border:1px solid #1E1E1E;
+    cursor:pointer;
+    display:inline-block;
+    font-family:"Lucida Grande",Lucida,Arial,sans_serif;
+    margin:0 2px;
+    overflow:visible;
+    text-decoration:none;
+    text-shadow:0 1px 1px #040404;
+    vertical-align:middle;
+    width:auto;
+    color: white;
+}
+
+.agregar {
+    padding: 7px;
+}
+
+ ul.errorlist {
+        margin: 0;
+        padding: 0;
+      
+        
+    }
+    .errorlist li {
+    
+       -moz-background-clip:border;
+    -moz-background-inline-policy:continuous;
+    -moz-background-origin:padding;
+    -moz-border-radius-bottomleft:6px;
+    -moz-border-radius-bottomright:6px;
+    -moz-border-radius-topleft:6px;
+    -moz-border-radius-topright:6px;
+        background-color: #b05454;
+        color: white;
+        display: block;
+      
+        margin: 0px;
+        padding: 2px 3px;
+    }

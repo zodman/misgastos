@@ -1,0 +1,36 @@
+{% extends "base.html"%}
+{% block js %}
+<script type="text/javascript" src="/static/misgastos.js">
+</script>
+{% endblock %}
+
+{% block content %}
+<form method="POST"  action="{% url add_tipo %}">
+<table>
+<thead>
+    <tr>
+        <th colspan="2">
+            Tipo
+        </th>
+    </tr>
+</thead>
+<tbody>
+    {{ form }}
+</tbody>
+
+     <tfoot>
+        <tr>
+        <td colspan="2" class="right">
+            <button class="href" type="submit">Guardar</button>
+         </td>
+     </tr>
+    </tfoot>
+
+ </table>
+</form>
+
+<div class="right">
+    <button class="href" onclick="volver('{% url list_tipos %}')"> Volver </button>
+</div>
+
+{% endblock %}
