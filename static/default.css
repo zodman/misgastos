@@ -285,9 +285,10 @@ label {
 /* Sidebar */
 
 #sidebar {
-	float: right;
+	float: left;
 	width: 200px;
-	padding-right: 0px;
+    padding-left:10px;
+	padding-right: 10px;
 	padding-top: 20px;
     
 }

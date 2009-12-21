@@ -76,6 +76,9 @@ table.table_abc th.nombre {
 .right{
     text-align:right;
 }
+.center {
+    text-align:center;
+}
 
 .href {
     -moz-background-clip:border;
@@ -145,5 +148,7 @@ text-decoration:none;
 .total {
     font-size:28px;
     font-style:bold;
+    margin-left:5px;
+    margin-right:5px;
  }
     

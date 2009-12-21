@@ -35,11 +35,13 @@ Description: A two-column, fixed-width and lightweight template ideal for 1024x7
 	</div>
 	<div id="menu">
 		<ul>
+        <!--
 			<li class="active"><a href="#">homepage</a></li>
 			<li><a href="#">Mis gastos</a></li>
 			<li><a href="#">Categorias</a></li>
 			<li><a href="#">Tipos</a></li>
 			<li><a href="#">contact us</a></li>
+            -->
 		</ul>
 	</div>
 </div>
@@ -95,22 +97,25 @@ Description: A two-column, fixed-width and lightweight template ideal for 1024x7
 		<ul>
 			<li id="search">
 				{% load gasto%}
-                <div class="total">
+                
+                <div class="ui-widget-content ui-corner-all center">
+                    <div class="ui-widget-header ui-state-default ui-corner-top" style="align:center">TOTAL</div>
+                
                 $
-                <span>
+                <span style="font-size:28px;">
                 {% total ""%}
                 </span>
                 </div>
 			</li>
         
 			<li>
-				<h2><strong>Menu</strong> App</h2>
-				<ul>
-                    <li><a href="#">Mis Gastos </a></li>
-					<li><a href="{% url list_tipos%}">Tipos</a></li>
-					<li><a href="{% url list_categorias%}">Categorias</a></li>
-					
-				</ul>
+                <div style="padding-left:25px;" class="ui-widget-content ui-corner-all center">
+                <ul>
+                <li>{% echomonth 0 "%b %Y" %}: $ {% totalmonth "" 0%}</li>
+                <li>{% echomonth 1 "%b %Y" %}: $ {% totalmonth "" 1%}</li>
+               <li> {% echomonth 2 "%b %Y" %}: $ {% totalmonth "" 2%}</li>
+                </ul>
+               </div>
 			</li>
 		</ul>
 	</div>
@@ -122,14 +127,11 @@ Description: A two-column, fixed-width and lightweight template ideal for 1024x7
 <div id="footer">
 	<div id="footer-menu">
 		<ul>
-			<li class="active"><a href="#">homepage</a></li>
-			<li><a href="#">photo gallery</a></li>
-			<li><a href="#">about us</a></li>
-			<li><a href="#">links</a></li>
-			<li><a href="#">contact us</a></li>
+			<li class="active"><a href="/">homepage</a></li>
+			<li><a href="http://github.com/zodman/misgastos">github</a></li>
 		</ul>
 	</div>
-	<p id="legal">(c) 2008 YourSite. Design by <a href="http://www.freecsstemplates.org/">Free CSS Templates</a>.</p>
+	<p id="legal">(c) 2008 Mis gastos. Design by <a href="http://www.freecsstemplates.org/">Free CSS Templates</a>.</p>
 </div>
 <!-- end footer -->
 </body>

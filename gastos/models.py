@@ -15,7 +15,7 @@ class Tipo(models.Model):
         return self.nombre
 
 class Gasto(models.Model):
-    fecha     = models.DateField(auto_now=True, blank = False, null = False)
+    fecha     = models.DateField( blank = False, null = False)
     tipo      = models.ForeignKey(Tipo)
     categoria = models.ForeignKey(Categoria) 
  

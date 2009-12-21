@@ -37,7 +37,7 @@ Nuevo Gasto
         <tbody>
         {% for gasto in object_list%}
          <tr {% cycle 'class="odd"' '' %}>
-            <th>{{ gasto.fecha }}</th>
+            <th>{{ gasto.fecha|date:"D d M Y"  }}</th>
             <td>{{ gasto.tipo }}</td>
             <td>{{ gasto.categoria }}</td>
             <td>{{ gasto.concepto }}</td>

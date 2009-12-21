@@ -1,6 +1,13 @@
 {% extends "base.html" %}
 {% block js %}
 <script type="text/javascript" src="/static/misgastos.js"></script>
+<script type="text/javascript">
+$(document).ready(function (){
+    $("#id_fecha").datepicker( {
+        dateFormat: "yy-mm-dd"
+    });
+    });
+</script>
 {% endblock %}
 
 {%block csstabgasto%}ui-state-default ui-corner-top ui-tabs-selected ui-state-active{% endblock%}
