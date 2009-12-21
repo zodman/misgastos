@@ -6,23 +6,28 @@ function editar(url){
     document.location.href=url;
 }
 function borrar(url){
-  Dialog.question(
-  'Are you sure?',
-  {
-    'title': 'Borrar',
-    'onYes': function(dialog) {
-    document.location.href=url;  
-      dialog.close();
-    },
-    'onNo': function(dialog) {
-      dialog.close();
+    buttons = {
+        "Si": function(){
+        document.location.href=url;  
+        },
+        "Cancelar": function(){
+            $(this).dialog("close");
+        }
     }
-  }
-);
-    
+
+    $("#del").dialog("option",'buttons', buttons);
+    $("#del").dialog("open");
+ 
 }
 
 function volver(url) {
     document.location.href=url;
 }
 
+$(document).ready(function(){
+    $("#del").dialog( {
+        autoOpen:false,
+        title:"Borrar"
+    });
+
+});

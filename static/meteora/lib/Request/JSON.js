@@ -1,2 +1,0 @@
-
-Request.JSON=new Class({Extends:Request,options:{secure:true},initialize:function(options){arguments.callee.parent(options);this.headers.extend({'Accept':'application/json','X-Request':'JSON'});},success:function(text){this.response.json=JSON.decode(text,this.options.secure);this.onSuccess(this.response.json,text);}});
