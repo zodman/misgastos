@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% block js %}
+<script type="text/javascript" src="/static/misgastos.js"></script>
+{% endblock %}
+
+{%block csstabgasto%}ui-state-default ui-corner-top ui-tabs-selected ui-state-active{% endblock%}
+{%block csstabcategoria%}ui-state-default ui-corner-top{% endblock %}
+{%block csstabtipo%}ui-state-default ui-corner-top{% endblock %}
+{%block content%}
+<div class="right agregar">
+    <button class="href" onclick="volver('{% url index %}')"> Volver </button>
+</div>
+<form method="post" action="">
+<table class="theme table_add">
+<thead>
+    <tr>
+        <th colspan="2">
+        Nuevo Gasto
+        </th>
+    </tr>
+</thead>
+<tbody>
+    {{form}}
+</tbody>
+<tfoot>
+    <tr>
+        <td colspan="2" class="right">
+            <button type="Submit" class="ui-state-default ui-corner-all">
+            Guardar
+            </button>
+        </td>
+    </tr>
+</tfoot>
+</table>
+</form>
+
+
+{%endblock%}

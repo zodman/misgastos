@@ -3,10 +3,12 @@
 <script type="text/javascript" src="/static/misgastos.js">
 </script>
 {% endblock %}
-
+{%block csstabcategoria%}ui-state-default ui-corner-top ui-tabs-selected ui-state-active{% endblock%}
+{%block csstabgasto%}ui-state-default ui-corner-top{% endblock %}
+{%block csstabtipo%}ui-state-default ui-corner-top{% endblock %}
 {% block content %}
-<form method="POST"  action="{% url add_categoria %}">
-<table>
+<form method="POST"  action="">
+<table class="theme table_add">
 <thead>
     <tr>
         <th colspan="2">
@@ -21,7 +23,7 @@
      <tfoot>
         <tr>
         <td colspan="2" class="right">
-            <button class="href" type="submit">Guardar</button>
+            <button class="ui-state-default ui-corner-all" type="submit">Guardar</button>
          </td>
      </tr>
     </tfoot>
@@ -29,8 +31,8 @@
  </table>
 </form>
 
-<div class="right">
-    <button class="href" onclick="volver('{% url list_categorias %}')"> Volver </button>
+<div class="right agregar">
+    <button class="ui-state-default ui-corner-all" onclick="volver('{% url list_categorias %}')"> Volver </button>
 </div>
 
 {% endblock %}

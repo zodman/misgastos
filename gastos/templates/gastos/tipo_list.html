@@ -3,16 +3,21 @@
 <script type="text/javascript" src="/static/misgastos.js"></script>
 {% endblock %}
 
+{%block csstabtipo%}ui-state-default ui-corner-top ui-tabs-selected ui-state-active{% endblock%}
+{%block csstabgasto%}ui-state-default ui-corner-top{% endblock %}
+{%block csstabcategoria%}ui-state-default ui-corner-top{% endblock %}
+
+
 {% block content %}
 
 <div class="right agregar">
-    <button type="button" class="href" onclick="Agregar('{% url add_tipo %}')">Agregar</button>
+    <button type="button" class="ui-state-default ui-corner-all" onclick="Agregar('{% url add_tipo %}')">Agregar</button>
 </div>
 {% with object_list as tipos %}
-    <table class="table_abc">
+    <table class="table_abc theme">
         <thead>
         <tr>
-            <th colspan="2">Tipos </th>
+            <th colspan="2">tipos </th>
         </tr>
         </thead>
         <tbody>
@@ -20,8 +25,12 @@
          <tr {% cycle 'class="odd"' '' %}>
             <th class="nombre">{{ tipo.nombre }}</th>
             <td>
-                <button class="href" onclick="borrar('{% url del_tipo tipo %}')">Eliminar</button>
-                <button class="href" onclick="editar('{% url edit_tipo tipo %}')">Editar</button>
+                          <button class="ui-widget ui-state-default ui-corner-all" onclick="borrar('{% url del_tipo tipo.nombre %}')">
+                     <span class="ui-icon ui-icon-circle-close"></span>
+                </button>
+                <button class="ui-widget ui-state-default ui-corner-all" onclick="editar('{% url edit_tipo tipo.nombre %}')">
+                    <span class="ui-icon ui-icon-pencil"></span>
+                </button>
             </td>
         </tr>
         {% endfor %}
@@ -33,5 +42,7 @@
     
 {% endwith %}
     
-
+<div id="del">
+ Desea Borrar?
+</div>
 {% endblock%}

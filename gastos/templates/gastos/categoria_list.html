@@ -3,13 +3,18 @@
 <script type="text/javascript" src="/static/misgastos.js"></script>
 {% endblock %}
 
+
+{%block csstabcategoria%}ui-state-default ui-corner-top ui-tabs-selected ui-state-active{% endblock%}
+{%block csstabgasto%}ui-state-default ui-corner-top{% endblock %}
+{%block csstabtipo%}ui-state-default ui-corner-top{% endblock %}
+
 {% block content %}
 
 <div class="right agregar">
-    <button type="button" class="href" onclick="Agregar('{% url add_categoria %}')">Agregar</button>
+    <button type="button" class="ui-state-default ui-corner-all" onclick="Agregar('{% url add_categoria %}')">Agregar</button>
 </div>
 {% with object_list as cats %}
-    <table class="table_abc">
+    <table class="table_abc theme">
         <thead>
         <tr>
             <th colspan="2">Categorias </th>
@@ -20,8 +25,14 @@
          <tr {% cycle 'class="odd"' '' %}>
             <th class="nombre">{{ tipo.nombre }}</th>
             <td>
-                <button class="href" onclick="borrar('{% url del_categoria tipo %}')">Eliminar</button>
-                <button class="href" onclick="editar('{% url edit_categoria tipo %}')">Editar</button>
+            
+             <button class="ui-widget ui-state-default ui-corner-all" onclick="borrar('{% url del_categoria tipo.nombre %}')">
+                     <span class="ui-icon ui-icon-circle-close"></span>
+                </button>
+                <button class="ui-widget ui-state-default ui-corner-all" onclick="editar('{% url edit_categoria tipo.nombre %}')">
+                    <span class="ui-icon ui-icon-pencil"></span>
+                </button>
+               
             </td>
         </tr>
         {% endfor %}
@@ -32,6 +43,8 @@
     </table>
     
 {% endwith %}
-    
+    <div id="del">
+ Desea Borrar?
+</div>
 
 {% endblock%}

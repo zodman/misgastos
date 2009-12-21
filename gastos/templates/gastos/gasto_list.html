@@ -1,0 +1,77 @@
+{% extends "base.html" %}
+
+{% block js %}
+<script type="text/javascript" src="/static/misgastos.js"></script>
+<script type="text/javascript" src="/static/jquery/jquery.tooltip.min.js"></script>
+<link href="/static/jquery/jquery.tooltip.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript">
+$(function(){
+    $(".tultip").tooltip();
+    });
+</script>
+{% endblock %}
+
+{% block content %}
+<div class="right agregar">
+<button class="ui-state-default ui-corner-all" onclick="Agregar('{% url add_gasto %}')">
+Nuevo Gasto
+</button>
+</div>
+
+<div class="gastos_main">
+    
+   
+    <table class="table_abc theme">
+        <thead>
+        <tr>
+            <th scope="col">fecha</th>
+            <th scope="col">tipo</th>
+            <th>categoria</th>
+             <th>concepto</th>
+             <th>Importe</th>
+             <th></th>
+             
+             <th>Acciones</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for gasto in object_list%}
+         <tr {% cycle 'class="odd"' '' %}>
+            <th>{{ gasto.fecha }}</th>
+            <td>{{ gasto.tipo }}</td>
+            <td>{{ gasto.categoria }}</td>
+            <td>{{ gasto.concepto }}</td>
+             <td>${{ gasto.importe }}</td>
+             <td>
+                {% if gasto.nota %}
+                <div class=" tultip ui-icon ui-icon-info " title="{{ gasto.nota|linebreaksbr }}" />
+                   
+                 
+                {%endif%}
+             </td>
+             
+            <td class="ui-widget-content">
+                <button class="ui-widget ui-state-default ui-corner-all" onclick="borrar('{% url del_gasto gasto.id %}')">
+                     <span class="ui-icon ui-icon-circle-close"></span>
+                </button>
+                <button class="ui-widget ui-state-default ui-corner-all" onclick="editar('{% url edit_gasto gasto.id %}')">
+                    <span class="ui-icon ui-icon-pencil"></span>
+                </button>
+            </td>
+        </tr>
+        {% endfor %}
+        </tbody>
+        <tfoot>
+        <tr><td colspan="2"/></tr>
+        </tfoot>
+    </table>
+
+
+</div>
+
+<div id="del">
+ Desea Borrar?
+</div>
+
+
+{% endblock %}
