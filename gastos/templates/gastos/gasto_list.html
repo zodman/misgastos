@@ -19,8 +19,8 @@ Nuevo Gasto
 </div>
 
 <div class="gastos_main">
-    
-   
+
+
     <table class="table_abc theme">
         <thead>
         <tr>
@@ -30,7 +30,7 @@ Nuevo Gasto
              <th>concepto</th>
              <th>Importe</th>
              <th></th>
-             
+
              <th>Acciones</th>
         </tr>
         </thead>
@@ -45,12 +45,13 @@ Nuevo Gasto
              <td>
                 {% if gasto.nota %}
                 <div class=" tultip ui-icon ui-icon-info " title="{{ gasto.nota|linebreaksbr }}" />
-                   
-                 
+
+
                 {%endif%}
              </td>
-             
+
             <td class="ui-widget-content">
+
                 <button class="ui-widget ui-state-default ui-corner-all" onclick="borrar('{% url del_gasto gasto.id %}')">
                      <span class="ui-icon ui-icon-circle-close"></span>
                 </button>

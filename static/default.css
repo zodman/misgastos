@@ -290,7 +290,7 @@ label {
     padding-left:10px;
 	padding-right: 10px;
 	padding-top: 20px;
-    
+
 }
 
 #sidebar ul {
@@ -388,7 +388,7 @@ label {
 	width: 900px;
 	background: url(/static/images/img07.jpg) no-repeat left top;
 	margin: 0 auto;
-	padding: 10px 0 0 60px;
+	padding: 10px 0 0 0px;
 	color: #353535;
 }
 
@@ -397,12 +397,14 @@ html>body #footer {
 }
 
 #footer-menu {
+    padding-left:60px;
 }
 
 #legal {
 	clear: both;
 	font-size: 11px;
 	color: #6D6D6D;
+   padding-left:60px;
 }
 
 #legal a {
