@@ -1,0 +1,54 @@
+{% extends "base.html"%}
+{% block js%}
+<script type="text/javascript" >
+
+$(document).ready(function (){
+    $("#create_form").dialog( {
+        autoOpen: false,
+        width: 430,
+        title: "Registro",
+        buttons: {
+            "Registro": function(){}
+        }
+    });
+});
+
+function abrirRegistro(){
+    $("#create_form").dialog("open");
+}
+
+</script>
+{% endblock %}
+{%block nocontent %}
+<div class="contenido">
+    {% if form.errors %}
+        <div class="contenido ui-state-error ui-corner-all">
+            <span class="ui-icon ui-icon-alert button-icon"></span>
+                Tu usuario no es correcto
+        </div>
+    {% endif %}
+    <div class="contenido">
+        <form method="post" action="">
+        <table>
+            {{ form }}
+        </table>
+
+        <button type="submit" value="Ingresar" class="ui-state-default ui-corner-all ui-state-focus"> Ingresar </button>
+        <input type="hidden" name="next" value="{{ next }}" />
+        </form>
+
+        {%if form_create %}
+            <div class="right">
+                <button type="button" class="ui-state-default ui-corner-all ui-state-focus" onclick="abrirRegistro()"> Registrar </button>
+            </div>
+
+
+        <div id="create_form">
+            <table>
+                {{ form_create }}
+            </table>
+        </div>
+       {% endif %}
+    </div>
+</div>
+{% endblock%}
