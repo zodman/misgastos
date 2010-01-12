@@ -7,7 +7,7 @@ from django.contrib.auth.models import User
 class Categoria(models.Model):
     nombre  = models.CharField(max_length = 40 )
 
-    user    = models.ForeignKey(User, unique = True)
+    user    = models.ForeignKey(User)
     created = models.DateTimeField(auto_now=False, auto_now_add=True, editable=False)
     updated = models.DateTimeField(auto_now=True, auto_now_add=False, editable=False)
     def __unicode__(self):
@@ -16,7 +16,7 @@ class Categoria(models.Model):
 class Tipo(models.Model):
     nombre  = models.CharField(max_length = 40 )
 
-    user    = models.ForeignKey(User, unique = True)
+    user    = models.ForeignKey(User)
     created = models.DateTimeField(auto_now=False, auto_now_add=True, editable=False)
     updated = models.DateTimeField(auto_now=True, auto_now_add=False, editable=False)
     def __unicode__(self):
@@ -30,7 +30,7 @@ class Gasto(models.Model):
     importe   = models.FloatField(help_text = "<span class='tiny'>Cantidad de $</span> ", blank = False, null = False)
     nota      = models.TextField(blank = True)
 
-    user      = models.ForeignKey(User, unique = True)
+    user      = models.ForeignKey(User)
     created   = models.DateTimeField(auto_now=False, auto_now_add=True,editable=False)
     updated   = models.DateTimeField(auto_now=True, auto_now_add=False, editable=False)
     def __unicode__(self):

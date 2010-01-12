@@ -30,19 +30,25 @@ Description: A two-column, fixed-width and lightweight template ideal for 1024x7
 <!-- start header -->
 <div id="header">
 	<div id="logo">
-		<h1><a href="#">Mis Gastos<sup></sup></a></h1>
+		<h1><a href="/">Mis Gastos<sup></sup></a></h1>
 		<h2>django app</h2>
 	</div>
 	<div id="menu">
-		<ul>
-        <!--
-			<li class="active"><a href="#">homepage</a></li>
+    <ul>
+    {% if user.is_authenticated %}
+        <li><div class="ui-state-error ui-corner-all ui-widget center">{{user.username}}</div></li>
+        <li><a class="ui-state-default ui-corner-all ui-widget " href="{% url changepass %}"> Cambiar pass </a></li>
+		<li><a class="ui-state-default ui-corner-all ui-widget " href="{% url logout %}"> Salir </a></l>
+<!--
 			<li><a href="#">Mis gastos</a></li>
 			<li><a href="#">Categorias</a></li>
 			<li><a href="#">Tipos</a></li>
 			<li><a href="#">contact us</a></li>
-            -->
-		</ul>
+    -->
+    {% else %}
+            <li><a class="ui-state-default ui-corner-all ui-widget " href="{% url logout %}"> Registro </a></li>
+    {% endif %}
+	</ul>
 	</div>
 </div>
 <!-- end header -->

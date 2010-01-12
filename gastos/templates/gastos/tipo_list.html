@@ -25,10 +25,10 @@
          <tr {% cycle 'class="odd"' '' %}>
             <th class="nombre">{{ tipo.nombre }}</th>
             <td>
-                          <button class="ui-widget ui-state-default ui-corner-all" onclick="borrar('{% url del_tipo tipo.nombre %}')">
+                          <button class="ui-widget ui-state-default ui-corner-all" onclick="borrar('{% url del_tipo tipo.id %}')">
                      <span class="ui-icon ui-icon-circle-close"></span>
                 </button>
-                <button class="ui-widget ui-state-default ui-corner-all" onclick="editar('{% url edit_tipo tipo.nombre %}')">
+                <button class="ui-widget ui-state-default ui-corner-all" onclick="editar('{% url edit_tipo tipo.id %}')">
                     <span class="ui-icon ui-icon-pencil"></span>
                 </button>
             </td>
@@ -39,9 +39,9 @@
         <tr><td colspan="2"/></tr>
         </tfoot>
     </table>
-    
+
 {% endwith %}
-    
+
 <div id="del">
  Desea Borrar?
 </div>

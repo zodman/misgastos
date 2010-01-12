@@ -6,74 +6,116 @@ from django.http import HttpResponseRedirect
 from django.shortcuts import get_object_or_404, render_to_response
 from django.contrib.auth.decorators import login_required
 from django.forms.models import modelformset_factory
+from django.template import RequestContext
 
 
 from misgastos.gastos.models import Tipo, Categoria, Gasto
-from misgastos.gastos.forms import GastoForm
+from misgastos.gastos.forms import GastoForm, TipoForm, CategoriaForm
 
 ###########################################3
 @login_required
 def list_tipos(request):
-    queryset = Tipo.objects.all()
+    queryset = Tipo.objects.filter(user = request.user)
     return object_list(request, queryset = queryset)
+
+
 @login_required
 def edit_tipo(request, tipo):
-    t = get_object_or_404(Tipo,nombre = tipo)
-    return update_object(request, model = Tipo, object_id = t.id )
+    t = get_object_or_404(Tipo,id = tipo)
+    if request.POST:
+        f = TipoForm(request.POST,instance = t)
+        if f.is_valid():
+            f.save()
+            return HttpResponseRedirect(reverse('list_tipos'))
+        else:
+            return render_to_response("gastos/tipo_form.html", dict(form=f))
+    else:
+        f = TipoForm(instance = t)
+    return render_to_response("gastos/tipo_form.html", dict(form=f),
+            context_instance=RequestContext(request)
+        )
+
+
 @login_required
 def add_tipo(request):
     if request.POST:
-        formtipo = modelformset_factory(Tipo,request.POST, exclude=("user",))
+        formtipo = TipoForm(request.POST)
         if formtipo.is_valid():
             tip = formtipo.save(commit=False)
             tip.user = request.user
             tip.save()
             return HttpResponseRedirect(reverse('list_tipos'))
         else:
-            return render_to_response("gastos/tipo_form.html", dict(form=formtipo))
+            return render_to_response("gastos/tipo_form.html",
+                dict(form=formtipo)
+            )
     else:
-        formtipo = modelformset_factory(Tipo,exclude=("user"))
-    return render_to_response("gastos/tipo_form.html", dict(form=formtipo))
-#    return create_object(request,model = Tipo, post_save_redirect = reverse('list_tipos'))
+        formtipo = TipoForm()
+    return render_to_response("gastos/tipo_form.html", dict(form=formtipo),
+            context_instance=RequestContext(request)
+        )
+
+
 @login_required
 def del_tipo(request, tipo):
-    tipo = Tipo.objects.filter(nombre = tipo)
+    tipo = Tipo.objects.filter(id = tipo)
     tipo.delete()
     return HttpResponseRedirect(reverse('list_tipos'))
+
 ###########################################
 @login_required
 def list_categorias(request):
-    queryset = Categoria.objects.all()
+    queryset = Categoria.objects.filter(user = request.user)
     return object_list(request, queryset = queryset)
+
 @login_required
 def edit_categoria(request, nombre):
     cat = get_object_or_404(Categoria, nombre = nombre)
-    return update_object(request, model = Categoria, object_id = cat.id )
+    if request.POST:
+        f = CategoriaForm(request.POST, instance = cat )
+        if f.is_valid():
+            f.save()
+            return HttpResponseRedirect(reverse("list_categorias"))
+    else:
+        f = CategoriaForm(instance = cat)
+    return render_to_response("gastos/categoria_form.html", dict(form = f ),
+        context_instance=RequestContext(request)
+    )
+
 @login_required
 def add_categoria(request):
     if request.POST:
-        catform = modelformset_factory(Categoria, request.POST, exclude=("user",))
+        catform = CategoriaForm(request.POST)
         if catform.is_valid():
             cat = catform.save(commit = False)
             cat.user = request.user
             cat.save()
             return HttpResponseRedirect(reverse('list_categorias'))
         else:
-            return render_to_response("gastos/categoria_form.html", dict( form =catform))
+            return render_to_response("gastos/categoria_form.html",
+                dict( form = catform), context_instance=RequestContext(request)
+                )
     else:
-        catform = modelformset_factory(Categoria,exclude=("user",))
-    return render_to_response("gastos/categoria_form.html", dict( form =catform))
-    #return create_object(request,model = Categoria, post_save_redirect = reverse('list_categorias'))
+        catform = CategoriaForm()
+    return render_to_response(
+        "gastos/categoria_form.html", dict(form = catform),
+        context_instance=RequestContext(request)
+    )
+
+
 @login_required
 def del_categoria(request, nombre):
     cat = Categoria.objects.filter(nombre = nombre)
     cat.delete()
     return HttpResponseRedirect(reverse('list_categorias'))
- ##############################################################
+
+
+##############################################################
 @login_required
 def index(request):
-    gastos = Gasto.objects.all()
+    gastos = Gasto.objects.filter(user = request.user )
     return object_list(request, queryset = gastos)
+
 @login_required
 def add_gasto(request):
     if request.POST:
@@ -87,12 +129,16 @@ def add_gasto(request):
             return HttpResponseRedirect(reverse('index'))
     else:
         gastoform = GastoForm()
-    return render_to_response("gastos/gasto_form.html", dict(form = gastoform))
-    #return create_object(request,form_class = GastoForm, post_save_redirect = reverse('index'))
+    return render_to_response("gastos/gasto_form.html", dict(form = gastoform),
+            context_instance=RequestContext(request)
+        )
+
+
 @login_required
 def edit_gasto(request, id):
     g = get_object_or_404(Gasto, id = id)
     return update_object(request, model = Gasto, object_id = g.id , post_save_redirect = reverse('index'))
+
 @login_required
 def del_gasto(request, id):
     g = get_object_or_404(Gasto, id = id)
