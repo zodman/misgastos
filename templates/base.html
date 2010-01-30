@@ -30,13 +30,19 @@ Description: A two-column, fixed-width and lightweight template ideal for 1024x7
 <!-- start header -->
 <div id="header">
 	<div id="logo">
-		<h1><a href="/">Mis Gastos<sup></sup></a></h1>
+		<h1>
+                <a href="{% if user.is_authenticated %}{% url index %}{%else%}/{% endif %}">
+                    Mis Gastos<sup></sup>
+                </a>
+                </h1>
 		<h2>django app</h2>
 	</div>
 	<div id="menu">
     <ul>
     {% if user.is_authenticated %}
-        <li><div class="ui-state-error ui-corner-all ui-widget center">{{user.username}}</div></li>
+        <li><div class="ui-state-error ui-corner-all ui-widget center">
+            {{user.username}}
+        </div></li>
         <li><a class="ui-state-default ui-corner-all ui-widget " href="{% url auth_password_change %}"> Cambiar pass </a></li>
 	<li><a class="ui-state-default ui-corner-all ui-widget " href="{% url logout %}"> Salir </a></l>
 <!--
@@ -92,7 +98,7 @@ Description: A two-column, fixed-width and lightweight template ideal for 1024x7
 		<ul>
 			<li id="search">
 				{% load gasto%}
-
+             
                 <div class="ui-widget-content ui-corner-all center">
                     <div class="ui-widget-header ui-state-default ui-corner-top" style="align:center">TOTAL</div>
 
