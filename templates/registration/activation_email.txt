@@ -1,0 +1,2 @@
+
+Link de activacion http://{{site}}{% url registration_activate activation_key%}

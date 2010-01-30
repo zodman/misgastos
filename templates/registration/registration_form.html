@@ -1,0 +1,27 @@
+{% extends "base.html"%}
+
+
+{%block nocontent %}
+<div class="contenido">
+    {% if form.errors %}
+        <div class="contenido ui-state-error ui-corner-all">
+            <span class="ui-icon ui-icon-alert button-icon"></span>
+                Tu usuario no es correcto
+        </div>
+    {% endif %}
+    <div class="contenido">
+        <div class="ui-widget ui-widget-content padding">
+            <div class="ui-widget-header ui-widget ui-state-default center"> Registro </div>
+        <form method="post" action="">
+        <table>
+            {{ form }}
+        </table>
+        <div class="right contenido">
+        <button type="submit" value="Registrar" class="ui-state-default ui-corner-all ui-state-focus"> Ingresar </button>
+        <input type="hidden" name="next" value="{{ next }}" />
+        </div>
+        </form>
+    </div>
+    </div>
+</div>
+{% endblock%}
