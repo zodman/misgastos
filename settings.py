@@ -83,6 +83,11 @@ INSTALLED_APPS = (
     'django.contrib.sites',
     'django.contrib.admin',
     'django.contrib.flatpages',
-
-    'gastos'
+    # Local apps
+    'gastos',
+    #django apps
+    'registration',
 )
+
+
+ACCOUNT_ACTIVATION_DAYS=1
