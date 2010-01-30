@@ -89,5 +89,11 @@ INSTALLED_APPS = (
     'registration',
 )
 
-
 ACCOUNT_ACTIVATION_DAYS=1
+
+try:
+    from local_settings import *
+except ImportError, exp:
+    pass
+
+

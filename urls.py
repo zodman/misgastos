@@ -9,8 +9,9 @@ urlpatterns = patterns('',
 
     (r'^gasto/', include('misgastos.gastos.urls')),
     (r'^$','django.views.generic.simple.direct_to_template',{'template':'principal.html'}),
-   # (r'^accounts/', include("misgastos.reg.urls")),
+    (r'^accounts/', include("misgastos.reg.urls")),
     (r'^accounts/', include('registration.backends.default.urls')),
+
 
 
 

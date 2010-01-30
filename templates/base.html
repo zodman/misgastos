@@ -37,7 +37,7 @@ Description: A two-column, fixed-width and lightweight template ideal for 1024x7
     <ul>
     {% if user.is_authenticated %}
         <li><div class="ui-state-error ui-corner-all ui-widget center">{{user.username}}</div></li>
-        <li><a class="ui-state-default ui-corner-all ui-widget " href="{% url changepass %}"> Cambiar pass </a></li>
+        <li><a class="ui-state-default ui-corner-all ui-widget " href="{% url auth_password_change %}"> Cambiar pass </a></li>
 	<li><a class="ui-state-default ui-corner-all ui-widget " href="{% url logout %}"> Salir </a></l>
 <!--
 			<li><a href="#">Mis gastos</a></li>
@@ -46,9 +46,10 @@ Description: A two-column, fixed-width and lightweight template ideal for 1024x7
 			<li><a href="#">contact us</a></li>
     -->
     {% else %}
-<!--
-            <li><a class="ui-state-default ui-corner-all ui-widget " href="{# url  #}"> Registro </a></li>
--->
+
+            <li><a class="ui-state-default ui-corner-all ui-widget " href="{% url registration_register %}"> Registro </a></li>
+            <li><a class="ui-state-default ui-corner-all ui-widget " href="{% url auth_login %}"> Acceso </a></li>
+
     {% endif %}
     </ul>
 	</div>
@@ -87,7 +88,7 @@ Description: A two-column, fixed-width and lightweight template ideal for 1024x7
 
 	<!-- start sidebar -->
 	<div id="sidebar">
-    {% if user.is_authenticate %}
+    {% if user.is_authenticated %}
 		<ul>
 			<li id="search">
 				{% load gasto%}
