@@ -38,7 +38,7 @@ Description: A two-column, fixed-width and lightweight template ideal for 1024x7
     {% if user.is_authenticated %}
         <li><div class="ui-state-error ui-corner-all ui-widget center">{{user.username}}</div></li>
         <li><a class="ui-state-default ui-corner-all ui-widget " href="{% url changepass %}"> Cambiar pass </a></li>
-		<li><a class="ui-state-default ui-corner-all ui-widget " href="{% url logout %}"> Salir </a></l>
+	<li><a class="ui-state-default ui-corner-all ui-widget " href="{% url logout %}"> Salir </a></l>
 <!--
 			<li><a href="#">Mis gastos</a></li>
 			<li><a href="#">Categorias</a></li>
@@ -46,9 +46,11 @@ Description: A two-column, fixed-width and lightweight template ideal for 1024x7
 			<li><a href="#">contact us</a></li>
     -->
     {% else %}
-            <li><a class="ui-state-default ui-corner-all ui-widget " href="{% url logout %}"> Registro </a></li>
+<!--
+            <li><a class="ui-state-default ui-corner-all ui-widget " href="{# url  #}"> Registro </a></li>
+-->
     {% endif %}
-	</ul>
+    </ul>
 	</div>
 </div>
 <!-- end header -->
@@ -56,50 +58,33 @@ Description: A two-column, fixed-width and lightweight template ideal for 1024x7
 <!-- start page -->
 <div id="page">
 	<!-- start content -->
-	<div id="content">
-    <!--
-		<div class="post">
-			<h2 class="title"><b>Welcome to </b>django app </h2>
-			<p class="date">Feb<b>11</b></p>
-			<div class="entry">
-				<p>
-                    Intro
+  <div id="content">
+     <div class="post">
+      {% block nocontent %}
+        {% if user.is_authenticated %}
+	     <div class="ui-tabs ui-widget ui-widget-content ui-corner-all" id="tabs2">
+		<ul class="ui-tabs-nav ui-helper-reset ui-helper-clearfix ui-widget-header ui-corner-all">
+		     <li class="{%block csstabgasto%}ui-state-default ui-corner-top ui-tabs-selected ui-state-active{% endblock%}">
+			<a href="{% url index %}">Mis gastos</a>
+		     </li>
+		      <li class="{%block csstabtipo%}ui-state-default ui-corner-top{% endblock %}">
+			<a href="{%url list_tipos%}">Tipos</a>
+		      </li>
+		      <li class="{%block csstabcategoria%}ui-state-default ui-corner-top{% endblock %}">
+			<a href="{%url list_categorias%}">Categorias</a>
+		      </li>
+		</ul>
+		      <div class="contenido">
+			{% block content%}
+			{% endblock%}
+		      </div>
+	    	</div>
+       {% endif %}
+     {% endblock %}
+     </div>	<!-- post -->
+    </div><!--CONTENT -->
+  </div><!-- PAGE -->
 
-                </p>
-			</div>
-			<div class="meta">
-				<p class="links"><a href="#" class="more">Read full article</a></p>
-			</div>
-		</div>
-        -->
-
-<div class="post">
-    {% block nocontent %}
-             <div class="ui-tabs ui-widget ui-widget-content ui-corner-all" id="tabs2">
-           <ul class="ui-tabs-nav ui-helper-reset ui-helper-clearfix ui-widget-header ui-corner-all">
-
-             <li class="{%block csstabgasto%}ui-state-default ui-corner-top ui-tabs-selected ui-state-active{% endblock%}">
-                <a href="{% url index %}">Mis gastos</a>
-             </li>
-              <li class="{%block csstabtipo%}ui-state-default ui-corner-top{% endblock %}">
-                <a href="{%url list_tipos%}">Tipos</a>
-              </li>
-
-              <li class="{%block csstabcategoria%}ui-state-default ui-corner-top{% endblock %}">
-                <a href="{%url list_categorias%}">Categorias</a>
-              </li>
-
-              </ul>
-              <div class="contenido">
-                {% block content%}
-                {% endblock%}
-              </div>
-        </div>
-    {% endblock %}
-</div>
-
-	</div>
-	<!-- end content -->
 	<!-- start sidebar -->
 	<div id="sidebar">
     {% if user.is_authenticate %}
