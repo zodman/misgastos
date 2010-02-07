@@ -7,7 +7,7 @@ import datetime
 @register.simple_tag
 def total(username):
     total = 0
-    for g in Gasto.objects.all():
+    for g in Gasto.objects.filter(user__username=username):
         total += g.importe
     return total
 
@@ -25,6 +25,6 @@ def totalmonth(username, count):
     date = datetime.datetime.now()
     newdate = datetime.timedelta(days=-30* int(count))
     d = date + newdate
-    for g in Gasto.objects.filter(fecha__month=d.month, fecha__year = d.year):
+    for g in Gasto.objects.filter(user__username=username,fecha__month=d.month, fecha__year = d.year):
         total += g.importe
     return total
