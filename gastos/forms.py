@@ -8,6 +8,11 @@ class TipoForm(forms.ModelForm):
 
 
 class GastoForm(forms.ModelForm):
+    def __init__(self,username, *args, **kwargs):
+	super(GastoForm,self).__init__(*args,**kwargs)
+	self.fields["categoria"].queryset = Categoria.objects.filter(user = username)
+	self.fields["tipo"].queryset = Tipo.objects.filter(user = username)
+
     class Meta:
         model = Gasto
         exclude = ("user",)

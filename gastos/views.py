@@ -119,7 +119,7 @@ def index(request):
 @login_required
 def add_gasto(request):
     if request.POST:
-        gastoform = GastoForm(request.POST)
+        gastoform = GastoForm(request.user, request.POST)
         if not gastoform.is_valid():
            return render_to_response("gastos/gasto_form.html", dict(form = gastoform))
         else:
@@ -128,7 +128,7 @@ def add_gasto(request):
             gast.save()
             return HttpResponseRedirect(reverse('index'))
     else:
-        gastoform = GastoForm()
+        gastoform = GastoForm(request.user)
     return render_to_response("gastos/gasto_form.html", dict(form = gastoform),
             context_instance=RequestContext(request)
         )
