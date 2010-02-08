@@ -121,7 +121,7 @@ def add_gasto(request):
     if request.POST:
         gastoform = GastoForm(request.user, request.POST)
         if not gastoform.is_valid():
-           return render_to_response("gastos/gasto_form.html", dict(form = gastoform))
+           return render_to_response("gastos/gasto_form.html", dict(form = gastoform),context_instance=RequestContext(request))
         else:
             gast = gastoform.save(commit=False)
             gast.user = request.user
@@ -137,11 +137,11 @@ def add_gasto(request):
 @login_required
 def edit_gasto(request, id):
     g = get_object_or_404(Gasto, id = id)
-    
     if request.POST:
         gastoform = GastoForm(request.user, request.POST, instance = g)
-        if not gastoform.is_valid():
-           return render_to_response("gastos/gasto_form.html", dict(form = gastoform))
+        
+        if not gastoform.is_valid():            
+            return render_to_response("gastos/gasto_form.html", dict(form = gastoform), context_instance=RequestContext(request))
         else:
             gast = gastoform.save(commit=False)
             return HttpResponseRedirect(reverse('index'))
