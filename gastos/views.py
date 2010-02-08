@@ -137,7 +137,20 @@ def add_gasto(request):
 @login_required
 def edit_gasto(request, id):
     g = get_object_or_404(Gasto, id = id)
-    return update_object(request, model = Gasto, object_id = g.id , post_save_redirect = reverse('index'))
+    
+    if request.POST:
+        gastoform = GastoForm(request.user, request.POST, instance = g)
+        if not gastoform.is_valid():
+           return render_to_response("gastos/gasto_form.html", dict(form = gastoform))
+        else:
+            gast = gastoform.save(commit=False)
+            return HttpResponseRedirect(reverse('index'))
+    else:
+        gastoform = GastoForm(request.user, instance = g )
+    return render_to_response("gastos/gasto_form.html", dict(form = gastoform),
+            context_instance=RequestContext(request)
+        )
+
 
 @login_required
 def del_gasto(request, id):
