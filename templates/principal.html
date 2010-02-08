@@ -1,6 +1,10 @@
 {% extends "base.html"%}
 
 {%block nocontent %}
+{% if user.is_authenticated %}
+  <p><a href="{%url index%}">Ir a gastos</a>  </p>
+{% endif %}
+
 <div class="ui-widget ui-widget-head">
 	{% block content%}
 	<div class="ui-widget wi-widget-content padding">
