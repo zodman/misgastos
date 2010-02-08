@@ -17,8 +17,6 @@ def echomonth(count, forma_string):
     newdate = datetime.timedelta(days=-30* int(count))
     return (date + newdate).strftime(forma_string)
 
-
-
 @register.simple_tag
 def totalmonth(username, count):
     total = 0

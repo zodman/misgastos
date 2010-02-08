@@ -104,7 +104,7 @@ Description: A two-column, fixed-width and lightweight template ideal for 1024x7
 
                 $
                 <span style="font-size:28px;">
-                {% total ""%}
+                {% total user.username%}
                 </span>
                 </div>
 			</li>
@@ -112,9 +112,9 @@ Description: A two-column, fixed-width and lightweight template ideal for 1024x7
 			<li>
                 <div style="padding-left:25px;" class="ui-widget-content ui-corner-all center">
                 <ul>
-                <li>{% echomonth 0 "%b %Y" %}: $ {% totalmonth "" 0%}</li>
-                <li>{% echomonth 1 "%b %Y" %}: $ {% totalmonth "" 1%}</li>
-               <li> {% echomonth 2 "%b %Y" %}: $ {% totalmonth "" 2%}</li>
+                <li>{% echomonth 0 "%b %Y" %}: $ {% totalmonth user.username 0%}</li>
+                <li>{% echomonth 1 "%b %Y" %}: $ {% totalmonth user.username 1%}</li>
+               <li> {% echomonth 2 "%b %Y" %}: $ {% totalmonth user.username 2%}</li>
                 </ul>
                </div>
 			</li>
