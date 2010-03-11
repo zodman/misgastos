@@ -23,6 +23,7 @@ Description: A two-column, fixed-width and lightweight template ideal for 1024x7
 <link type="text/css" href="/static/jquery/css/south-street/jquery-ui-1.7.2.custom.css" rel="stylesheet" />
 <script type="text/javascript" src="/static/jquery/js/jquery-1.3.2.min.js"></script>
 <script type="text/javascript" src="/static/jquery/js/jquery-ui-1.7.2.custom.min.js"></script>
+<script type="text/javascript" src="/static/jquery/jquery.sparkline.min.js"></script>
 {% block js %}
 {% endblock%}
 </head>
@@ -112,10 +113,14 @@ Description: A two-column, fixed-width and lightweight template ideal for 1024x7
 			<li>
                 <div style="padding-left:25px;" class="ui-widget-content ui-corner-all center">
                 <ul>
-                <li>{% echomonth 0 "%b %Y" %}: $ {% totalmonth user.username 0%}</li>
+                <li><span class="sparkline"></span>{% echomonth 0 "%b %Y" %}: $ {% totalmonth user.username 0%}</li>
                 <li>{% echomonth 1 "%b %Y" %}: $ {% totalmonth user.username 1%}</li>
                <li> {% echomonth 2 "%b %Y" %}: $ {% totalmonth user.username 2%}</li>
                 </ul>
+                <script type="text/javascript">
+                        $('.sparkline').sparkline([1,2,3,4]); 
+
+                </script>
                </div>
 			</li>
 		</ul>
