@@ -112,14 +112,15 @@ Description: A two-column, fixed-width and lightweight template ideal for 1024x7
 
 			<li>
                 <div style="padding-left:25px;" class="ui-widget-content ui-corner-all center">
-                <ul>
-                <li><span class="sparkline"></span>{% echomonth 0 "%b %Y" %}: $ {% totalmonth user.username 0%}</li>
-                <li>{% echomonth 1 "%b %Y" %}: $ {% totalmonth user.username 1%}</li>
-               <li> {% echomonth 2 "%b %Y" %}: $ {% totalmonth user.username 2%}</li>
+                <ul id="graph">
+                {%for i in user.get_profile.get_number_months %}
+                    <li><span class="sparkline{{i}}"></span>{% echomonth i "%b %Y" %}: $ {% totalmonth user.username i %}</li>
+                {%endfor%}
                 </ul>
                 <script type="text/javascript">
-                        $('.sparkline').sparkline([1,2,3,4]); 
-
+                    $(".sparkline0").sparkline({% graphmonth 0 user.username%});
+                    $(".sparkline1").sparkline({% graphmonth 1 user.username%});
+                    $(".sparkline2").sparkline({% graphmonth 2 user.username%});
                 </script>
                </div>
 			</li>

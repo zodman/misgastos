@@ -6,7 +6,7 @@ def get_dir():
 LOGIN_REDIRECT_URL = "/gasto"
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
-
+UTH_PROFILE_MODULE = 'reg.UserProfile'
 ADMINS = (
    ("admin","admin@admin.com")
 )
@@ -85,8 +85,10 @@ INSTALLED_APPS = (
     'django.contrib.flatpages',
     # Local apps
     'gastos',
+    'reg',
     #django apps
     'registration',
+    'south',
 )
 
 ACCOUNT_ACTIVATION_DAYS=1
