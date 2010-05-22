@@ -24,7 +24,13 @@ Description: A two-column, fixed-width and lightweight template ideal for 1024x7
 <script type="text/javascript" src="/static/jquery/js/jquery-1.3.2.min.js"></script>
 <script type="text/javascript" src="/static/jquery/js/jquery-ui-1.7.2.custom.min.js"></script>
 <script type="text/javascript" src="/static/jquery/jquery.sparkline.min.js"></script>
+    {% if user.is_authenticated %}
+         <script type="text/javascript" src="/static/misgastos.js"></script> 
+    {% endif %}
+
+
 {% block js %}
+
 {% endblock%}
 </head>
 <body>
@@ -72,15 +78,22 @@ Description: A two-column, fixed-width and lightweight template ideal for 1024x7
         {% if user.is_authenticated %}
 	     <div class="ui-tabs ui-widget ui-widget-content ui-corner-all" id="tabs2">
 		<ul class="ui-tabs-nav ui-helper-reset ui-helper-clearfix ui-widget-header ui-corner-all">
-		     <li class="{%block csstabgasto%}ui-state-default ui-corner-top ui-tabs-selected ui-state-active{% endblock%}">
+		     <li class=" ui-state-default ui-corner-top{%block csstabgasto%}{% endblock%}">
 			<a href="{% url index %}">Mis gastos</a>
 		     </li>
-		      <li class="{%block csstabtipo%}ui-state-default ui-corner-top{% endblock %}">
-			<a href="{%url list_tipos%}">Tipos</a>
+		      <li class=" ui-state-default ui-corner-top  {%block csstabtipo%}{% endblock %}">
+			<a href="{%url list_tipos%}">SubCategorias</a>
 		      </li>
-		      <li class="{%block csstabcategoria%}ui-state-default ui-corner-top{% endblock %}">
-			<a href="{%url list_categorias%}">Categorias</a>
+		      <li class="ui-state-default ui-corner-top {%block csstabcategoria%}{% endblock %}">
+			    <a href="{%url list_categorias%}">Categorias</a>
 		      </li>
+              <li class=" ui-state-default ui-corner-top{%block csstabingreso%}{%endblock%}">
+                <a href="{% url list_ingresos %}">Ingreso</a>
+              </li>
+                <li class=" ui-state-default ui-corner-top{%block csstabbalance%}{%endblock%}">
+                <a href="{% url show_balance %}">Balance</a>
+              </li>
+
 		</ul>
 		      <div class="contenido">
 			{% block content%}
@@ -94,8 +107,10 @@ Description: A two-column, fixed-width and lightweight template ideal for 1024x7
   </div><!-- PAGE -->
 
 	<!-- start sidebar -->
+{% block leftmenu %}
 	<div id="sidebar">
     {% if user.is_authenticated %}
+            
 		<ul>
 			<li id="search">
 				{% load gasto%}
@@ -112,9 +127,16 @@ Description: A two-column, fixed-width and lightweight template ideal for 1024x7
 
 			<li>
                 <div style="padding-left:25px;" class="ui-widget-content ui-corner-all center">
+                    <span style="float:right;" class=" link ui-icon ui-icon-pencil" onclick="change_number_months('{% url change_month%}');"></span>
+                    <div id="change_month_number">
+                       Cambiar de {{user.get_profile.number_months}} a:  <input type="text" id="id_number_month">
+                    </div>
                 <ul id="graph">
                 {%for i in user.get_profile.get_number_months %}
-                    <li><span class="sparkline{{i}}"></span>{% echomonth i "%b %Y" %}: $ {% totalmonth user.username i %}</li>
+                    <li>
+                        <span class="sparkline{{i}}"></span>
+                            {% echomonth i "%b %Y" %}: $ {% totalmonth user.username i %}
+                    </li>
                 {%endfor%}
                 </ul>
                 <script type="text/javascript">
@@ -128,6 +150,7 @@ Description: A two-column, fixed-width and lightweight template ideal for 1024x7
     {% endif %} {# endif user logged#}
 	</div>
 	<!-- end sidebar -->
+{% endblock %}
 	<div style="clear: both;">&nbsp;</div>
 </div>
 <!-- end page -->

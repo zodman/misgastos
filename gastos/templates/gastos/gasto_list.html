@@ -11,6 +11,7 @@ $(function(){
 </script>
 {% endblock %}
 
+{%block csstabgasto%}ui-state-default ui-corner-top ui-tabs-selected ui-state-active{% endblock%}
 {% block content %}
 <div class="right agregar">
 <button class="ui-state-default ui-corner-all" onclick="Agregar('{% url add_gasto %}')">
@@ -25,8 +26,8 @@ Nuevo Gasto
         <thead>
         <tr>
             <th scope="col">fecha</th>
-            <th scope="col">tipo</th>
-            <th>categoria</th>
+            <th scope="col">Categoria</th>
+            <th>SubCategoria</th>
              <th>concepto</th>
              <th>Importe</th>
              <th></th>
@@ -38,8 +39,11 @@ Nuevo Gasto
         {% for gasto in object_list%}
          <tr {% cycle 'class="odd"' '' %}>
             <th>{{ gasto.fecha|date:"D d M Y"  }}</th>
-            <td>{{ gasto.tipo }}</td>
-            <td>{{ gasto.categoria }}</td>
+            <td>{% for i in  gasto.subcategoria.categorias.all %}
+                    {{i}}
+                {% endfor%}
+            </td>
+            <td>{{ gasto.subcategoria }}</td>
             <td>{{ gasto.concepto }}</td>
              <td>${{ gasto.importe }}</td>
              <td>

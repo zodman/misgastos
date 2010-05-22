@@ -7,6 +7,12 @@
 {%block csstabgasto%}ui-state-default ui-corner-top{% endblock %}
 {%block csstabtipo%}ui-state-default ui-corner-top{% endblock %}
 {% block content %}
+<div>
+    {% if needs_categories %}
+        Es necesario crear subcategorias
+    {%endif%}
+</div>
+
 <form method="POST"  action="">
 <table class="theme table_add">
 <thead>

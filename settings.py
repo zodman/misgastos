@@ -6,10 +6,11 @@ def get_dir():
 LOGIN_REDIRECT_URL = "/gasto"
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
-UTH_PROFILE_MODULE = 'reg.UserProfile'
+AUTH_PROFILE_MODULE = 'reg.UserProfile'
 ADMINS = (
    ("admin","admin@admin.com")
 )
+MONTH = 3
 
 MANAGERS = ADMINS
 
@@ -88,7 +89,6 @@ INSTALLED_APPS = (
     'reg',
     #django apps
     'registration',
-    'south',
 )
 
 ACCOUNT_ACTIVATION_DAYS=1

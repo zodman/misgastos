@@ -1,0 +1,40 @@
+{% extends "base.html"%}
+{%block js%}
+<script type="text/javascript">
+$(document).ready(function(){
+ $("#content").css("width","100%");
+ $("#content").css("padding-left","0px");
+});
+</script> 
+
+{%endblock%}
+{%block leftmenu%}
+{%endblock%}
+{% block csstabbalance%}ui-tabs-selected ui-state-active{%endblock%}
+{% block content%}
+<table class="table_abc theme">
+        <thead>
+            <tr>
+                <th colspan="{{ gasto|length }}"></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th>Fecha</th>
+                 {%for i in gastos%}
+                    <td>
+                    {{i.fecha}}
+                    </td>
+                {% endfor %}
+            </tr> 
+            <tr>
+                <th>Gasto</th>
+                {%for i in gastos%}
+                    <td>
+                    {{i.importe}}
+                    </td>
+                {% endfor %}
+            </tr>
+        </tbody>
+    </table>
+{%endblock%}
