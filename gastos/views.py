@@ -8,6 +8,8 @@ from django.contrib.auth.decorators import login_required
 from django.forms.models import modelformset_factory
 from django.template import RequestContext
 
+import datetime
+
 
 from misgastos.gastos.models import SubCategoria, Categoria, Gasto,Ingreso
 from misgastos.gastos.forms import GastoForm, SubCategoriaForm, CategoriaForm, IngresoForm
@@ -115,7 +117,7 @@ def del_categoria(request, nombre):
 ##############################################################
 @login_required
 def index(request):
-    gastos = Gasto.objects.filter(user = request.user )
+    gastos = Gasto.objects.filter(user = request.user ).order_by("fecha")
     return object_list(request, queryset = gastos)
 
 @login_required
@@ -128,6 +130,7 @@ def add_gasto(request):
             gast = gastoform.save(commit=False)
             gast.user = request.user
             gast.save()
+            gastoform.save_m2m()
             return HttpResponseRedirect(reverse('index'))
     else:
         gastoform = GastoForm(request.user)
@@ -139,12 +142,16 @@ def add_gasto(request):
 @login_required
 def edit_gasto(request, id):
     g = get_object_or_404(Gasto, id = id)
+    if g.user != request.user:
+        raise Http404
     if request.POST:
         gastoform = GastoForm(request.user, request.POST, instance = g)
         if not gastoform.is_valid():            
             return render_to_response("gastos/gasto_form.html", dict(form = gastoform), context_instance=RequestContext(request))
         else:
             gast = gastoform.save(commit=False)
+            gast.save()
+            gastoform.save_m2m()
             return HttpResponseRedirect(reverse('index'))
     else:
         gastoform = GastoForm(request.user, instance = g )
@@ -194,9 +201,18 @@ def edit_ingreso(request,id_ingreso):
         raise Http404
     return update_object(request,object_id= id_ingreso,model=Ingreso,post_save_redirect=reverse("list_ingresos"))
 
+@login_required
 def show_balance(request):
-    gastos = Gasto.objects.filter(user = request.user)
-    ingresos = Ingreso.objects.filter(user = request.user)
-    return render_to_response("balance.html", dict(gastos = gastos, ingresos = ingresos), 
-        context_instance = RequestContext(request)
-        )
+    from templatetags.gasto import graphmonth,echomonth
+    profile = request.user.get_profile()
+    gasto_mensual = dict()
+    for i in profile.get_number_months():
+        key = echomonth(i,"%m-%Y")
+        total = 0
+        for g in graphmonth(i,request.user.username):
+            total = total + g
+        gasto_mensual[key] = total
+    gasto_mensual = [(fecha,importe) for fecha,importe in gasto_mensual.items()]
+    gasto_mensual.sort()
+    return render_to_response("balance.html", dict(gastos = gasto_mensual), 
+        context_instance = RequestContext(request) )

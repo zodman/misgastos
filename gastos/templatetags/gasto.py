@@ -19,7 +19,7 @@ def graphmonth(count, username):
     ndate = date+newdate
     date_ini = datetime.datetime(ndate.year,ndate.month,1)
     date_fin = date_ini + relativedelta(months=1) - relativedelta(days=1)
-    r = Gasto.objects.filter(fecha__range= (date_ini,date_fin)).values_list('importe', flat=True)
+    r = Gasto.objects.filter(user__username = username,fecha__range= (date_ini,date_fin)).values_list('importe', flat=True)
     return r
 
 

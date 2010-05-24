@@ -1,9 +1,15 @@
 {% extends "base.html"%}
 {%block js%}
+<script type="text/javascript" src="{{MEDIA_URL}}jquery/excanvas.js"></script>
+<script type="text/javascript" src="{{MEDIA_URL}}jquery/visualize.jQuery.js"></script>
+<link type="text/css" href="{{MEDIA_URL}}visualize.css" rel="stylesheet">
+<link type="text/css" href="{{MEDIA_URL}}visualize-light.css" rel="stylesheet">
 <script type="text/javascript">
 $(document).ready(function(){
  $("#content").css("width","100%");
  $("#content").css("padding-left","0px");
+
+    $("table").visualize({type:'line',width: '760px'});
 });
 </script> 
 
@@ -13,25 +19,24 @@ $(document).ready(function(){
 {% block csstabbalance%}ui-tabs-selected ui-state-active{%endblock%}
 {% block content%}
 <table class="table_abc theme">
+<caption>Gastos </caption>
+
         <thead>
             <tr>
-                <th colspan="{{ gasto|length }}"></th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <th>Fecha</th>
-                 {%for i in gastos%}
-                    <td>
-                    {{i.fecha}}
-                    </td>
+                <td></td>
+                 {%for fecha,importe in gastos%}
+                    <th scope="col">
+                    {{fecha}}
+                    </th>
                 {% endfor %}
             </tr> 
-            <tr>
-                <th>Gasto</th>
-                {%for i in gastos%}
+        </thead>
+        <tbody>
+           <tr>
+                <th scope="row">Gasto</th>
+                 {%for fecha,importe in gastos%}
                     <td>
-                    {{i.importe}}
+                    {{importe}}
                     </td>
                 {% endfor %}
             </tr>
