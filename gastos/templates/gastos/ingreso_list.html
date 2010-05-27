@@ -43,7 +43,7 @@ Nuevo Ingreso
              <td>${{ ingreso.importe }}</td>
             <td class="ui-widget-content">
 
-                <button class="ui-widget ui-state-default ui-corner-all" onclick="borrar('{# url del_ingreso ingreso.id #}')">
+                <button class="ui-widget ui-state-default ui-corner-all" onclick="borrar('{% url del_ingreso ingreso.id %}')">
                      <span class="ui-icon ui-icon-circle-close"></span>
                 </button>
                 <button class="ui-widget ui-state-default ui-corner-all" onclick="editar('{% url edit_ingreso ingreso.id %}')">

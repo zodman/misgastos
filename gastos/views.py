@@ -14,6 +14,13 @@ import datetime
 from misgastos.gastos.models import SubCategoria, Categoria, Gasto,Ingreso
 from misgastos.gastos.forms import GastoForm, SubCategoriaForm, CategoriaForm, IngresoForm
 
+def find_model(request,id,Model):
+    i = get_object_or_404(Model,id = id)
+    if i.user != request.user:
+        raise Http404
+    return i
+
+
 ###########################################3
 @login_required
 def list_tipos(request):
@@ -23,7 +30,7 @@ def list_tipos(request):
 
 @login_required
 def edit_tipo(request, tipo):
-    t = get_object_or_404(SubCategoria,id = tipo)
+    t = find_model(request,tipo,Subcategoria)
     if request.POST:
         f = SubCategoriaForm(request.POST,instance = t)
         if f.is_valid():
@@ -141,9 +148,7 @@ def add_gasto(request):
 
 @login_required
 def edit_gasto(request, id):
-    g = get_object_or_404(Gasto, id = id)
-    if g.user != request.user:
-        raise Http404
+    g = find_model(request,id,Gasto)
     if request.POST:
         gastoform = GastoForm(request.user, request.POST, instance = g)
         if not gastoform.is_valid():            
@@ -162,7 +167,7 @@ def edit_gasto(request, id):
 
 @login_required
 def del_gasto(request, id):
-    g = get_object_or_404(Gasto, id = id)
+    g = find_model(request,id,Gasto)
     g.delete()
     return HttpResponseRedirect(reverse('index'))
 
@@ -194,12 +199,16 @@ def create_ingresos(request):
                 dict(form = f),context_instance =RequestContext(request)
                 )
     return create_object(request, form_class=IngresoForm)
+
 @login_required
 def edit_ingreso(request,id_ingreso):
-    i = get_object_or_404(Ingreso, id = id_ingreso)
-    if i.user != request.user:
-        raise Http404
+    i =find_model(request,id_ingreso,Ingreso)
     return update_object(request,object_id= id_ingreso,model=Ingreso,post_save_redirect=reverse("list_ingresos"))
+@login_required
+def del_ingreso(request,id_ingreso):
+    i = find_model(request,id_ingreso,Ingreso)
+    i.delete()
+    return HttpResponseRedirect(reverse("list_ingresos"))
 
 @login_required
 def show_balance(request):

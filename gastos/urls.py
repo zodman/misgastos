@@ -23,6 +23,7 @@ urlpatterns = patterns('misgastos.gastos.views',
     url("^ingreso$", 'list_ingresos', name = "list_ingresos"),
     url("^ingreso/nuevo$", 'create_ingresos', name = "create_ingreso"),
     url("^ingreso/edit/(?P<id_ingreso>\d.*)", 'edit_ingreso', name = "edit_ingreso"),
+    url("^ingreso/del/(?P<id_ingreso>\d.*)", 'del_ingreso', name = "del_ingreso"),
     
      url("^balance/$", 'show_balance', name = "show_balance"),
      
