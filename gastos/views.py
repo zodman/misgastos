@@ -217,7 +217,7 @@ def show_balance(request):
     gasto_mensual = dict()
     ingreso_mensual =dict()
     for i in profile.get_number_months():
-        key = echomonth(i,"%m-%Y")
+        key = echomonth(i,"%B-%Y")
         total = 0
         total_ingreso = 0
         for g in graphmonth(i,request.user.username):

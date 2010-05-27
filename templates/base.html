@@ -30,6 +30,15 @@ Description: A two-column, fixed-width and lightweight template ideal for 1024x7
 
 
 {% block js %}
+<script type="text/javascript">
+$(document).ready(function(){
+ $("#content").css("width","100%");
+ $("#content").css("padding-left","0px");
+
+    $("table").visualize({type:'line',width: '760px'});
+});
+</script> 
+
 
 {% endblock%}
 </head>
