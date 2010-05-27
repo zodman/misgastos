@@ -33,6 +33,7 @@ $(document).ready(function(){
         </thead>
         <tbody>
            <tr>
+
                 <th scope="row">Gasto</th>
                  {%for fecha,importe in gastos%}
                     <td>
@@ -40,6 +41,15 @@ $(document).ready(function(){
                     </td>
                 {% endfor %}
             </tr>
+
+                <th scope="row">Ingreso</th>
+                 {%for fecha,importe in ingresos%}
+                    <td>
+                    {{importe}}
+                    </td>
+                {% endfor %}
+            </tr>
+
         </tbody>
     </table>
 {%endblock%}

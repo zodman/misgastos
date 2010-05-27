@@ -203,16 +203,27 @@ def edit_ingreso(request,id_ingreso):
 
 @login_required
 def show_balance(request):
-    from templatetags.gasto import graphmonth,echomonth
+    from templatetags.gasto import graphmonth,echomonth,graph_ingreso
     profile = request.user.get_profile()
     gasto_mensual = dict()
+    ingreso_mensual =dict()
     for i in profile.get_number_months():
         key = echomonth(i,"%m-%Y")
         total = 0
+        total_ingreso = 0
         for g in graphmonth(i,request.user.username):
             total = total + g
+
+        for i in  graph_ingreso(i,request.user.username):
+            total_ingreso = total_ingreso + i
+
         gasto_mensual[key] = total
+        ingreso_mensual[key] = total_ingreso
+
     gasto_mensual = [(fecha,importe) for fecha,importe in gasto_mensual.items()]
     gasto_mensual.sort()
-    return render_to_response("balance.html", dict(gastos = gasto_mensual), 
+    ingreso_mensual = [(fecha,importe) for fecha,importe in ingreso_mensual.items()]
+    ingreso_mensual.sort()
+    
+    return render_to_response("balance.html", dict(gastos = gasto_mensual, ingresos=ingreso_mensual), 
         context_instance = RequestContext(request) )

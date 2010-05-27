@@ -48,5 +48,5 @@ class Ingreso(models.Model):
     created   = models.DateTimeField(auto_now=False, auto_now_add=True,editable=False)
     updated   = models.DateTimeField(auto_now=True, auto_now_add=False, editable=False)
     def __unicode__(self):
-        return self.concepto
+        return self.nombre
 
