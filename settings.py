@@ -6,10 +6,11 @@ def get_dir():
 LOGIN_REDIRECT_URL = "/gasto"
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
-
+AUTH_PROFILE_MODULE = 'reg.UserProfile'
 ADMINS = (
    ("admin","admin@admin.com")
 )
+MONTH = 3
 
 MANAGERS = ADMINS
 
@@ -44,7 +45,7 @@ MEDIA_ROOT = get_dir() + "static/"
 # URL that handles the media served from MEDIA_ROOT. Make sure to use a
 # trailing slash if there is a path component (optional in other cases).
 # Examples: "http://media.lawrence.com", "http://example.com/media/"
-MEDIA_URL = ''
+MEDIA_URL = '/static/'
 
 # URL prefix for admin media -- CSS, JavaScript and images. Make sure to use a
 # trailing slash.
@@ -85,6 +86,7 @@ INSTALLED_APPS = (
     'django.contrib.flatpages',
     # Local apps
     'gastos',
+    'reg',
     #django apps
     'registration',
 )
