@@ -16,5 +16,16 @@ urlpatterns = patterns('misgastos.gastos.views',
      url("^categorias$", 'list_categorias', name = "list_categorias"),
      url("^categorias/nuevo$", 'add_categoria', name = "add_categoria"),
      url("^categorias/edit/(?P<nombre>\w.*)$", 'edit_categoria', name = "edit_categoria"),
-     url("^cateorias/del/(?P<nombre>\w.*)$", 'del_categoria', name = "del_categoria"),
+     url("^categorias/del/(?P<nombre>\w.*)$", 'del_categoria', name = "del_categoria"),
+     
+     url("^change_month/", 'change_month', name = "change_month"),
+
+    url("^ingreso$", 'list_ingresos', name = "list_ingresos"),
+    url("^ingreso/nuevo$", 'create_ingresos', name = "create_ingreso"),
+    url("^ingreso/edit/(?P<id_ingreso>\d.*)", 'edit_ingreso', name = "edit_ingreso"),
+    url("^ingreso/del/(?P<id_ingreso>\d.*)", 'del_ingreso', name = "del_ingreso"),
+    
+     url("^balance/$", 'show_balance', name = "show_balance"),
+     
+
 )
