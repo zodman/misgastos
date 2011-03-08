@@ -1,0 +1,69 @@
+{% extends "base.html" %}
+
+{% block js %}
+<script type="text/javascript" src="/static/misgastos.js"></script>
+<script type="text/javascript" src="/static/jquery/jquery.tooltip.min.js"></script>
+<link href="/static/jquery/jquery.tooltip.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript">
+$(function(){
+    $(".tultip").tooltip();
+    });
+</script>
+{% endblock %}
+
+{%block csstabingreso%} ui-state-default ui-corner-top ui-tabs-selected ui-state-active {% endblock%}
+{% block content %}
+<div class="right agregar">
+<button class="ui-state-default ui-corner-all" onclick="Agregar('{% url create_ingreso %}')">
+Nuevo Ingreso
+</button>
+</div>
+
+<div class="gastos_main">
+
+
+    <table class="table_abc theme">
+        <thead>
+        <tr>
+            <th scope="col">Nombre</th>
+            <th scope="col">Tipo</th>
+            <th>fecha Inicio</th>
+             <th>Fecha Fin</th>
+             <th>Importe</th>
+             <th>Acciones</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for ingreso in object_list%}
+         <tr {% cycle 'class="odd"' '' %}>
+            <th>{{ ingreso.nombre }}</th>
+            <td>{{ ingreso.tipo }}</td>
+            <td>{{ ingreso.fecha_inicio|date:"D d M Y"  }}</td>
+            <td>{{ ingreso.fecha_fin|date:"D d M Y"  }}</td>
+             <td>${{ ingreso.importe }}</td>
+            <td class="ui-widget-content">
+
+                <button class="ui-widget ui-state-default ui-corner-all" onclick="borrar('{% url del_ingreso ingreso.id %}')">
+                     <span class="ui-icon ui-icon-circle-close"></span>
+                </button>
+                <button class="ui-widget ui-state-default ui-corner-all" onclick="editar('{% url edit_ingreso ingreso.id %}')">
+                    <span class="ui-icon ui-icon-pencil"></span>
+                </button>
+            </td>
+        </tr>
+        {% endfor %}
+        </tbody>
+        <tfoot>
+        <tr><td colspan="2"/></tr>
+        </tfoot>
+    </table>
+
+
+</div>
+
+<div id="del">
+ Desea Borrar?
+</div>
+
+
+{% endblock %}

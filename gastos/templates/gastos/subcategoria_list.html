@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% block js %}
+<script type="text/javascript" src="/static/misgastos.js"></script>
+{% endblock %}
+
+{%block csstabtipo%}ui-state-default ui-corner-top ui-tabs-selected ui-state-active{% endblock%}
+{%block csstabgasto%}ui-state-default ui-corner-top{% endblock %}
+{%block csstabcategoria%}ui-state-default ui-corner-top{% endblock %}
+
+
+{% block content %}
+
+<div class="right agregar">
+    <button type="button" class="ui-state-default ui-corner-all" onclick="Agregar('{% url add_tipo %}')">Agregar</button>
+</div>
+{% with object_list as tipos %}
+    <table class="table_abc theme">
+        <thead>
+        <tr>
+            <th colspan="2">SubCategoria </th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for tipo in tipos%}
+         <tr {% cycle 'class="odd"' '' %}>
+            <th class="nombre">{{ tipo.nombre }}</th>
+            <td>
+                          <button class="ui-widget ui-state-default ui-corner-all" onclick="borrar('{% url del_tipo tipo.id %}')">
+                     <span class="ui-icon ui-icon-circle-close"></span>
+                </button>
+                <button class="ui-widget ui-state-default ui-corner-all" onclick="editar('{% url edit_tipo tipo.id %}')">
+                    <span class="ui-icon ui-icon-pencil"></span>
+                </button>
+            </td>
+        </tr>
+        {% endfor %}
+        </tbody>
+        <tfoot>
+        <tr><td colspan="2"/></tr>
+        </tfoot>
+    </table>
+
+{% endwith %}
+
+<div id="del">
+ Desea Borrar?
+</div>
+{% endblock%}

@@ -3,14 +3,15 @@
 <script type="text/javascript" src="/static/misgastos.js"></script>
 <script type="text/javascript">
 $(document).ready(function (){
-    $("#id_fecha").datepicker( {
+    $("#id_fecha_inicio,#id_fecha_fin").datepicker( {
         dateFormat: "yy-mm-dd"
     });
     });
 </script>
 {% endblock %}
 
-{%block csstabgasto%}ui-state-default ui-corner-top ui-tabs-selected ui-state-active{% endblock%}
+{%block csstabingreso%}ui-tabs-selected ui-state-active {% endblock %}
+
 {%block content%}
 <div class="right agregar">
     <button class="href" onclick="volver('{% url index %}')"> Volver </button>
@@ -20,7 +21,7 @@ $(document).ready(function (){
 <thead>
     <tr>
         <th colspan="2">
-        Nuevo Gasto
+        Nuevo Ingreso
         </th>
     </tr>
 </thead>

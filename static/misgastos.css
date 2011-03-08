@@ -162,3 +162,7 @@ button {
     float:left;
     margin-right:0.3em;
 }
+
+.link {
+ cursor: pointer;
+}

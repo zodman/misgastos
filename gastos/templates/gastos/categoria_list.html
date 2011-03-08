@@ -4,26 +4,29 @@
 {% endblock %}
 
 
-{%block csstabcategoria%}ui-state-default ui-corner-top ui-tabs-selected ui-state-active{% endblock%}
-{%block csstabgasto%}ui-state-default ui-corner-top{% endblock %}
-{%block csstabtipo%}ui-state-default ui-corner-top{% endblock %}
-
+{%block csstabcategoria%}ui-tabs-selected ui-state-active{% endblock%}
 {% block content %}
-
 <div class="right agregar">
     <button type="button" class="ui-state-default ui-corner-all" onclick="Agregar('{% url add_categoria %}')">Agregar</button>
 </div>
 {% with object_list as cats %}
-    <table class="table_abc theme">
+    <table class="table_abc theme" >
         <thead>
         <tr>
-            <th colspan="2">Categorias </th>
+            <th>Categorias</th>
+            <th>Subcategorias</th>
+            <th></th>
         </tr>
         </thead>
         <tbody>
         {% for tipo in cats%}
          <tr {% cycle 'class="odd"' '' %}>
-            <th class="nombre">{{ tipo.nombre }}</th>
+            <td>{{ tipo.nombre }}</td>
+            <td>
+                {%for sub in tipo.subcategorias.all %}
+                    {{sub}}
+                {%endfor%}
+            </td>
             <td>
             
              <button class="ui-widget ui-state-default ui-corner-all" onclick="borrar('{% url del_categoria tipo.nombre %}')">
