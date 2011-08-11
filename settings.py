@@ -4,7 +4,7 @@ def get_dir():
     return os.path.abspath(os.path.dirname(__file__)) + "/"
 
 LOGIN_REDIRECT_URL = "/gasto"
-DEBUG = True
+DEBUG = False
 TEMPLATE_DEBUG = DEBUG
 AUTH_PROFILE_MODULE = 'reg.UserProfile'
 ADMINS = (

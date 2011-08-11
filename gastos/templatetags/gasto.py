@@ -56,7 +56,7 @@ def graph_ingreso(count,username):
 def echomonth(count, forma_string):
     date = datetime.datetime.now()
     newdate = datetime.timedelta(days=-30* int(count))
-    return (date + newdate).strftime(forma_string)
+    return (date + newdate).strftime(forma_string.encode("ascii"))
 
 @register.simple_tag
 def totalmonth(username, count):

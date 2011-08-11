@@ -30,7 +30,7 @@ def list_tipos(request):
 
 @login_required
 def edit_tipo(request, tipo):
-    t = find_model(request,tipo,Subcategoria)
+    t = find_model(request,tipo,SubCategoria)
     if request.POST:
         f = SubCategoriaForm(request.POST,instance = t)
         if f.is_valid():

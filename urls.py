@@ -1,5 +1,5 @@
 from django.conf.urls.defaults import *
-from misgastos.settings import MEDIA_ROOT
+from misgastos.settings import MEDIA_ROOT, DEBUG
 
 # Uncomment the next two lines to enable the admin:
 from django.contrib import admin
@@ -16,5 +16,9 @@ urlpatterns = patterns('',
 
 
     (r'^admin/', include(admin.site.urls)),
-    (r'^static/(.*)','django.views.static.serve', {'document_root': MEDIA_ROOT, 'show_indexes': True})
 )
+
+if DEBUG:
+    urlpatterns += patterns('',
+        (r'^static/(.*)','django.views.static.serve', {'document_root': MEDIA_ROOT, 'show_indexes': True})
+    )
